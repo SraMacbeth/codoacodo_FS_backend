@@ -1,0 +1,9 @@
+# .gitignore
+
+# Entorno virtual
+mientornovirtual/
+
+# Archivos de entorno
+.env
+
+
