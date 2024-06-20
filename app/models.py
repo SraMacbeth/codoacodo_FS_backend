@@ -37,7 +37,7 @@ class Producto:
     def save(self):
         db = get_db()
         cursor = db.cursor()
-        if self.id_prpducto:
+        if self.id_producto:
             cursor.execute("""
             UPDATE productos SET nombre = %s, descripcion = %s, precio = %s, cantidad = %s
             WHERE id_producto = %s
@@ -46,7 +46,7 @@ class Producto:
             cursor.execute("""
             INSERT INTO productos (nombre, descripcion, precio, cantidad) VALUES (%s, %s, %s, %s)
             """, (self.nombre, self.descripcion, self.precio, self.cantidad))
-        self.id_producto = cursor.lastrowid
+            self.id_producto = cursor.lastrowid
         db.commit()
         cursor.close()
 

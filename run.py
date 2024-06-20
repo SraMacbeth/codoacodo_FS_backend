@@ -14,7 +14,7 @@ app.route('/api/productos/', methods=['POST'])(create_producto)
 
 app.route('/api/productos/<int:producto_id>', methods=['PUT'])(update_producto)
 
-app.route('/api/productos/<int:producto_id>', methods=['DELETE'])(update_producto)
+app.route('/api/productos/<int:producto_id>', methods=['DELETE'])(delete_producto)
 
 # Inicializar la base de datos con la aplicación Flask
 init_app(app)
