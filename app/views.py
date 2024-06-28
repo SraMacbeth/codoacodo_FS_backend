@@ -22,7 +22,7 @@ def get_producto(producto_id):
 #crear un producto
 def create_producto():
     data = request.json
-    new_producto = Producto(nombre=data['nombre'], descripcion=data['descripcion'], precio=data['precio'], cantidad=data['cantidad'])
+    new_producto = Producto(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], cantidad=data['cantidad'])
     new_producto.save()
     return jsonify({'message': 'Product created successfully'}), 201
 
@@ -33,7 +33,7 @@ def update_producto(producto_id):
         return jsonify({'message': 'Product not found'}), 404
     data = request.json
     producto.nombre = data['nombre']
-    producto.descripcion = data['descripcion']
+    producto.marca = data['marca']
     producto.precio = data['precio']
     producto.cantidad = data['cantidad']
     producto.save()

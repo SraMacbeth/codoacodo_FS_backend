@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from app.database import init_app
 from app.views import *
 
@@ -18,6 +19,9 @@ app.route('/api/productos/<int:producto_id>', methods=['DELETE'])(delete_product
 
 # Inicializar la base de datos con la aplicación Flask
 init_app(app)
+
+#permitir solicitudes desde cualquier origen
+CORS(app)
 
 if __name__ == '__main__':
     app.run(debug=True)
