@@ -17,6 +17,14 @@ app.route('/api/productos/<int:producto_id>', methods=['PUT'])(update_producto)
 
 app.route('/api/productos/<int:producto_id>', methods=['DELETE'])(delete_producto)
 
+app.route('/api/productos/<nombre>', methods=['GET'])(filtrar_nombre)
+
+app.route('/api/marcas/<marca>', methods=['GET'])(filtrar_marca)
+
+app.route('/api/precio/<int:precio>', methods=['GET'])(filtrar_precio)
+
+app.route('/api/cantidad/<int:cantidad>', methods=['GET'])(filtrar_cantidad)
+
 # Inicializar la base de datos con la aplicación Flask
 init_app(app)
 

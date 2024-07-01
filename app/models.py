@@ -67,3 +67,47 @@ class Producto:
         'precio': self.precio,
         'cantidad': self.cantidad
         }
+    
+    #Método para filtrar los productos por nombre
+    def get_by_nombre(nombre):
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM productos WHERE nombre = %s", (nombre,))
+        rows = cursor.fetchall()
+        productos = [Producto(id_producto=row[0], nombre=row[1], marca=row[2], precio=row[3], cantidad=row[4])
+        for row in rows]
+        cursor.close()
+        return productos
+    
+    #Método para filtrar los productos por marca
+    def get_by_marca(marca):
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM productos WHERE marca = %s", (marca,))
+        rows = cursor.fetchall()
+        productos = [Producto(id_producto=row[0], nombre=row[1], marca=row[2], precio=row[3], cantidad=row[4])
+        for row in rows]
+        cursor.close()
+        return productos
+
+    #Método para filtrar los productos por precio
+    def get_by_precio(precio):
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM productos WHERE precio < %s", (precio,))
+        rows = cursor.fetchall()
+        productos = [Producto(id_producto=row[0], nombre=row[1], marca=row[2], precio=row[3], cantidad=row[4])
+        for row in rows]
+        cursor.close()
+        return productos
+    
+        #Método para filtrar los productos por cantidad
+    def get_by_cantidad(cantidad):
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM productos WHERE cantidad < %s", (cantidad,))
+        rows = cursor.fetchall()
+        productos = [Producto(id_producto=row[0], nombre=row[1], marca=row[2], precio=row[3], cantidad=row[4])
+        for row in rows]
+        cursor.close()
+        return productos

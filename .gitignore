@@ -2,6 +2,7 @@
 
 # Entorno virtual
 mientornovirtual/
+venv/
 
 # Archivos de entorno
 .env

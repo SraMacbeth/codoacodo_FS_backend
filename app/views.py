@@ -46,3 +46,31 @@ def delete_producto(producto_id):
         return jsonify({'message': 'Product not found'}), 404
     producto.delete()
     return jsonify({'message': 'Product deleted successfully'})
+
+#filtrar productos por nombre
+def filtrar_nombre(nombre):
+    productos = Producto.get_by_nombre(nombre)
+    if not productos:
+        return jsonify({'message': 'Product not found'}), 404
+    return jsonify([producto.serialize() for producto in productos])
+
+#filtrar productos por marca
+def filtrar_marca(marca):
+    productos = Producto.get_by_marca(marca)
+    if not productos:
+        return jsonify({'message': 'Product not found'}), 404
+    return jsonify([producto.serialize() for producto in productos])
+
+#filtrar productos por precio
+def filtrar_precio(precio):
+    productos = Producto.get_by_precio(precio)
+    if not productos:
+        return jsonify({'message': 'Product not found'}), 404
+    return jsonify([producto.serialize() for producto in productos])
+
+#filtrar productos por cantidad
+def filtrar_cantidad(cantidad):
+    productos = Producto.get_by_cantidad(cantidad)
+    if not productos:
+        return jsonify({'message': 'Product not found'}), 404
+    return jsonify([producto.serialize() for producto in productos])
