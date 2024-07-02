@@ -72,7 +72,7 @@ class Producto:
     def get_by_nombre(nombre):
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM productos WHERE nombre = %s", (nombre,))
+        cursor.execute("SELECT * FROM productos WHERE nombre LIKE %s", ('%' + nombre + '%',))
         rows = cursor.fetchall()
         productos = [Producto(id_producto=row[0], nombre=row[1], marca=row[2], precio=row[3], cantidad=row[4])
         for row in rows]
@@ -83,7 +83,7 @@ class Producto:
     def get_by_marca(marca):
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM productos WHERE marca = %s", (marca,))
+        cursor.execute("SELECT * FROM productos WHERE marca LIKE %s", ('%' + marca + '%',))
         rows = cursor.fetchall()
         productos = [Producto(id_producto=row[0], nombre=row[1], marca=row[2], precio=row[3], cantidad=row[4])
         for row in rows]
